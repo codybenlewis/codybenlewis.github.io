@@ -14,8 +14,8 @@ title: Goldfingers Color Changer
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@1,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff;--ink:#17140f;--mute:#6f6a62;--line:#dedad2;--panel:#f3f1ec; --accent:rgba(0, 0, 0, .05); --on-accent:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:#e0472f}}
-:root[data-theme="dark"]{--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:#e0472f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:rgba(255,255,255,.08)}}
+:root[data-theme="dark"]{--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:rgba(255,255,255,.08)}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "Work Sans",system-ui,sans-serif}
@@ -102,7 +102,7 @@ main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
     <div>
       <p>Pick any two colors, or shuffle until you're happy. Files automatically export as a 1600 × 1600 PNG.</p>
       <div class="row">
-        <button class="btn" id="bRand"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button>
+        <button type="button" class="btn" id="bRand"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button>
       </div>
       <div class="fields">
         <div class="field"><label for="cBgT">Background</label><div class="pick"><input type="color" id="cBg" aria-label="Background color picker"><div class="hexwrap"><input type="text" id="cBgT" maxlength="7" spellcheck="false"><button class="die" id="dBg" aria-label="Randomize background color" title="Randomize background"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><g fill="currentColor" stroke="none"><circle cx="8.6" cy="8.6" r="1.2"/><circle cx="15.4" cy="8.6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="8.6" cy="15.4" r="1.2"/><circle cx="15.4" cy="15.4" r="1.2"/></g></svg></button></div></div></div>
@@ -112,7 +112,7 @@ main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
   </section>
   <section class="grid" id="grid" aria-label="Preset color combinations"></section>
   <hr class="rule">
-  <div class="more"><p>Seriously Dylan, you're not happy with any of those? Try these.</p><button class="btn" id="bMore"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button></div>
+  <div class="more"><p>Seriously Dylan, you're not happy with any of those? Try these.</p><button type="button" class="btn" id="bMore"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button></div>
   <section class="grid" id="grid2" aria-label="Random color combinations"></section>
   <p class="credit">Color inspiration from <a href="https://access.mymind.com/colors" target="_blank" rel="noopener noreferrer">mymind Colors</a>.</p>
 </main>
