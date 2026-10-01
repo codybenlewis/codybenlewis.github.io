@@ -1,0 +1,230 @@
+---
+title: Goldfingers Color Changer
+layout: blank
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goldfinger's Logo Colorways</title>
+<link id="favicon" rel="icon" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@1,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#17140f;--mute:#6f6a62;--line:#dedad2;--panel:#f3f1ec; --accent:rgba(0, 0, 0, .05); --on-accent:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:#e0472f}}
+:root[data-theme="dark"]{--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:#e0472f}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "Work Sans",system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#9c1303;color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:12px max(clamp(16px,3vw,40px),calc((100% - 1440px)/2))}
+.brand{font:italic 700 24px/1 "Playfair Display SC",Georgia,serif;margin-right:auto;letter-spacing:-.015em;text-transform:uppercase}
+.seg{display:inline-flex;gap:4px;border:1px solid var(--ink);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;padding:7px 20px;border-radius:999px;font-weight:500;transition:background .15s}
+.seg button:not([aria-pressed="true"]):hover{background:var(--panel)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:none;border-radius:999px;padding:9px 18px;font-weight:500;transition:background .15s,color .15s}
+.btn:hover{background:var(--accent)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.pri:hover{filter:brightness(1.1)}
+.btn:disabled{opacity:.6;cursor:progress}
+.ctl{display:flex;flex-wrap:nowrap;align-items:center;gap:10px}
+.bar .btn,.bar .seg button{white-space:nowrap}
+.bar .seg,.bar .btn{border-color:#fff;color:#fff}
+.bar .seg button:not([aria-pressed="true"]):hover,.bar .btn:hover{background:rgba(255,255,255,.14)}
+.bar .seg button[aria-pressed="true"]{background:#fff;color:#9c1303}
+main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
+.rule{border:0;border-top:1px solid var(--line);margin:56px 0 28px}
+.more{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-bottom:28px}
+.more p{margin:0;font-size:18px;font-weight:500}
+.custom{display:grid;grid-template-columns:50% minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:stretch;margin:28px 0 36px;padding:clamp(16px,3vw,32px);background:var(--panel);border-radius:6px}
+.custom .sw{align-self:start}
+.custom>div{display:flex;flex-direction:column;min-width:0}
+.custom p{margin:auto 0 22px;color:var(--mute);max-width:46ch}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px 20px;margin-bottom:22px;max-width:620px}
+.field{min-width:0}
+.field label{display:block;font-weight:500;margin-bottom:6px}
+.pick{display:flex;gap:8px}
+.pick input[type=color]{flex:none;width:42px;height:42px;padding:3px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer}
+.pick input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+.pick input[type=color]::-webkit-color-swatch,.pick input[type=color]::-moz-color-swatch{border:0;border-radius:3px}
+.hexwrap{position:relative;flex:1 1 0;min-width:0}
+.die{position:absolute;right:6px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:28px;height:28px;border:0;background:none;border-radius:4px;color:var(--mute)}
+.die:hover{color:var(--ink);background:var(--panel)}
+.die svg{width:18px;height:18px}
+.custom .row{margin-bottom:18px}
+.pick input[type=text]{width:100%;min-width:0;height:42px;padding:0 38px 0 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:500 15px "Work Sans",sans-serif;font-variant-numeric:tabular-nums;text-transform:uppercase}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 24px}
+.sw{position:relative;cursor:pointer;display:block;width:100%;aspect-ratio:1;padding:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff}
+.dli{opacity:.4;transition:opacity .15s}
+.sw:hover .dli,.sw:focus-visible .dli{opacity:1}
+.sw>svg{display:block;width:100%;height:100%}
+.dli{z-index:1;position:absolute;right:clamp(10px,1.6vw,18px);bottom:clamp(10px,1.6vw,18px);width:clamp(22px,2.6vw,30px);height:clamp(22px,2.6vw,30px);pointer-events:none}
+.dli svg{display:block;width:100%;height:100%}
+.card{container-type:inline-size}
+.meta{display:block;margin-top:8px}
+.nm{display:block;font-weight:500;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hex{display:flex;flex-wrap:nowrap;white-space:nowrap;gap:2px 14px;margin-top:4px;color:var(--mute);font-size:13px;line-height:1.4;font-variant-numeric:tabular-nums}
+@container (min-width:420px){.meta{display:flex;align-items:center;justify-content:space-between;gap:24px}.nm{flex:1 1 auto;min-width:0}.hex{flex:none;margin-top:0}}
+@container (max-width:200px){.hex{font-size:11.5px;gap:8px}.hex i{margin-right:4px}}
+.hex i{display:inline-block;width:10px;height:10px;border:1px solid var(--line);margin-right:6px;vertical-align:-1px}
+.note{color:var(--mute);font-size:13px;margin:36px 0 0}
+@media (max-width:960px){.ctl{width:100%}}
+@media (max-width:560px){.x{display:none}.seg button{padding:6px 12px}.btn{padding:8px 12px}}
+@media (max-width:380px){.ctl{gap:6px}.seg button{padding:6px 9px}.btn{padding:8px 9px}}
+@media (max-width:760px){.custom{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}.brand{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="defs"></defs></svg>
+<header class="bar">
+  <div class="brand">GOLDFINGER'S VINTAGE</div>
+  <div class="ctl">
+  <div class="seg" role="group" aria-label="Logo version">
+    <button id="bSolid" aria-pressed="true">Solid</button>
+    <button id="bOutline" aria-pressed="false">Outline</button>
+  </div>
+  <button class="btn" id="bSwap" title="Swap background and logo colors everywhere">Swap<span class="x"> colors</span></button>
+  <button class="btn" id="bZip">Download all<span class="x"> (ZIP)</span></button>
+  </div>
+</header>
+<main>
+  <section class="custom" aria-label="Custom colors">
+    <button class="sw" id="prevBtn" aria-label="Download custom colors as PNG"><svg id="prev" viewBox="0 0 150 150" aria-hidden="true"></svg><span class="dli" id="dliC"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></span></button>
+    <div>
+      <p>Pick any two colors, or shuffle until something lands. Everything exports as a 1600 × 1600 PNG.</p>
+      <div class="row">
+        <button class="btn" id="bRand"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button>
+      </div>
+      <div class="fields">
+        <div class="field"><label for="cBgT">Background</label><div class="pick"><input type="color" id="cBg" aria-label="Background color picker"><div class="hexwrap"><input type="text" id="cBgT" maxlength="7" spellcheck="false"><button class="die" id="dBg" aria-label="Randomize background color" title="Randomize background"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><g fill="currentColor" stroke="none"><circle cx="8.6" cy="8.6" r="1.2"/><circle cx="15.4" cy="8.6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="8.6" cy="15.4" r="1.2"/><circle cx="15.4" cy="15.4" r="1.2"/></g></svg></button></div></div></div>
+        <div class="field"><label for="cFgT">Logo</label><div class="pick"><input type="color" id="cFg" aria-label="Logo color picker"><div class="hexwrap"><input type="text" id="cFgT" maxlength="7" spellcheck="false"><button class="die" id="dFg" aria-label="Randomize logo color" title="Randomize logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><g fill="currentColor" stroke="none"><circle cx="8.6" cy="8.6" r="1.2"/><circle cx="15.4" cy="8.6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="8.6" cy="15.4" r="1.2"/><circle cx="15.4" cy="15.4" r="1.2"/></g></svg></button></div></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="grid" id="grid" aria-label="Preset color combinations"></section>
+  <hr class="rule">
+  <div class="more"><p>Seriously Dylan, you're not happy with any of those? Try these.</p><button class="btn" id="bMore"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button></div>
+  <section class="grid" id="grid2" aria-label="Random color combinations"></section>
+</main>
+<script>
+const D_OUT="M114.35,40.13c.59.33.84.77.64,1.45-.16.54-1.2,2.19-1.55,2.79-.41.69-.85,1.45-1.31,2.1-.27.37-.71,1.11-1.22,1.11h-38.7l9.76,17.66c.66-.65,1.27-1.4,1.86-2.13.41-.51.59-1.17,1.29-1.27h16.5c1.57.17,2.4,1.82,1.58,3.2l-10.07,18.13c-.58,1.14-1.78,1.39-2.66,1.99-.79.53-1.58,1.68-2.4,2.25l-1.66,1.01h4.38c3.87.6,13.91-21.96,13.91-21.96.89-1.07,1.83-2.1,2.71-3.18.51-.63.66-1.35,1.59-1.43.51-.05,2.31-.07,2.74.06.63.18.89.94.61,1.52l-22.73,40.88c-.44.69-1.08,1.36-1.81,1.75-.34.18-.81.29-1.08.47-1.48.96-2.57,3.36-4.85,3.37h-21.54c-1.54-.15-2.91-1.03-3.69-2.35l-21.68-39.18v-.77c.18-.41.41-.72.67-1.08.87-1.18,2.16-2.84,3.17-3.88.28-.29,1-.77,1.4-.77h14.45l-7.84-14.2c-.42-.64-.71-1.71-.17-2.37.35-.43,1.08-.98,1.51-1.44.3-.32,1.22-1.25,1.39-1.55.13-.22.15-.56.27-.82.3-.66.98-1.13,1.67-1.32h62.91ZM113.58,41.45h-62.02s-.36.22-.4.26c-.26.26-.31.66-.24,1,7.42,13.38,14.79,26.81,22.33,40.11.66.75,1.54,1.28,2.55,1.4,4.2-.25,8.78.33,12.94,0,1.11-.09,2.55-.77,3.2-1.68l10.22-18.44c.17-.28-.23-.95-.49-.95h-16l.91,1.63,12.01.06c.59.26.81.95.47,1.52l-6.73,12.1c-1.14,1.41-3.29,1.41-4.45.03l-17.49-31.47c-.81-1.92.65-3.94,2.68-4.01l39.64-.05.84-1.5ZM110.94,63.14h-1.94c-.03.18-.13.36-.22.52-4.27,7.32-8.05,15.08-12.4,22.31-1.37,2.28-3.11,3.58-5.86,3.75-5.38.32-11.16-.18-16.57-.09-2.22-.33-4.15-1.62-5.3-3.53l-12.73-22.94h-15.52c-.59.06-.98.6-.88,1.18,7.3,13.25,14.6,26.53,22.08,39.67.72.82,1.73,1.28,2.82,1.36,7.27-.08,14.56.15,21.82-.12.91-.25,1.67-.81,2.2-1.6l22.51-40.51ZM94.52,69.27h-10.23l4.43,8.08c.16.35.72.84,1.11.84.14,0,.09-.03.14-.1,1.6-2.73,3.03-5.56,4.67-8.28l-.12-.54Z",D_S1="M-44.52,41.06l-1.27,2.23c-.08.14-.22.22-.38.22h-42.16c-1.78,0-2.91,1.91-2.04,3.47l18.1,32.6c.89,1.6,3.19,1.6,4.08,0l6.87-12.42c.16-.29-.05-.64-.38-.64h-12.48c-.16,0-.3-.08-.38-.22l-1.24-2.22c-.16-.29.05-.64.38-.64h17.19c1.14,0,1.85,1.22,1.3,2.21l-10.65,19.16c-.82,1.47-2.96,2.39-4.65,2.39h-12.65c-1.79,0-3.44-.97-4.31-2.54l-23.13-41.64c-.65-1.17.2-2.6,1.53-2.6H-44.89c.33,0,.53.35.38.64Z",D_S2="M-47.32,64.07l-23.95,43.12c-.82,1.47-2.37,2.39-4.05,2.39h-21.95c-1.79,0-3.44-.97-4.31-2.54l-22.78-41c-.65-1.17.2-2.6,1.53-2.6h16.74l13.6,24.48c1.25,2.26,3.63,3.66,6.22,3.66h16.34c2.31,0,4.43-1.25,5.55-3.27l13.7-24.65c.08-.14.22-.22.38-.22h2.61c.33,0,.53.35.38.64Z";
+const RAW="Riviera|FF8B8B|9C2525;Swan Dive|F9F7E8|62BFAD;Radio Silence|61BFAD|FFFFFF;Corrupted Monk|E54B4B|FFFFFF;Mr. Business|167C80|FFFFFF;Brave Stranger|B7E3E4|F03F35;Wes Sanderson|EFE8D8|FF4552;Le Carnaval|005397|FF8788;Plant Matter|32B67A|FFFFFF;Rabbit Dreams|FBCBC1|FFFFFF;Laundry Service|F3C9DD|72AEC5;Favorite Bodega|0BBCD6|E6625E;Thirsty Lilac|BFB5D7|FFFFFF;Nightingale|BEA1A5|2D1FE8;Golden Afternoon|F0CF61|EBE8E1;Wingwoman|0E38B1|FFFFFF;Brain Waves|A6CFE2|FFFFFF;The Sanctuary|371722|FFFFFF;Ghosted|C7C6C4|008E8F;Melted Shake|DABAAF|0B0C11;Earnest Proposal|283470|15A29C;Swift Kiss|EF3E4A|FEDAC2;Old Diary|C0C2CE|012F63;Penny Candy|EEC0DB|162BF4;Chivalrous Fox|B6CAC0|C02A1B;Billiards Room|C5BEAA|B32A48;Cruller Intentions|FDF06F|D31B33;Gentle Giant|EDB5BD|000000;Drunk on Easter|17C37B|F4F4F4;Packed Lunch|F1C3B8|19227D;Dante's Daydream|1B1D1C|EA1821;Bite Your Tongue|E88565|181A27;Fresh Baguette|FFEFE5|1FC8A9;Righted Wrong|F4C7EE|008FD3;No Dice|77EEDF|28292B;Precious Ego|E57066|28292B;Open Book|EED974|28292B;Fat Wallet|FBFE56|0B64C0;Jam Jar|A7BBC3|FFFFFF;Dad's Old Wallet|3B465C|E9E8D4;Monastery Morning|055A5B|E6E6E6;Torn Tutu|9C9CDD|CAE9BF;Faded Letter|D3E8E1|78A15D;Mama's New Bag|CBA0AA|5A3C20;Late Homework|178E96|FFFFFF;Spring Awakening|20AD65|FEC8BE;Our Little Secret|E75153|58B89D;Dinner Party|4F3A4B|E75152;Cozy Sweater|112378|FBECCF;Pleasant Journey|E33946|FDEDB2;Peach Fuzz|FEDCCC|F87C4C;Dessert Island|00B28B|FFFFFF;Late Gift|9357A9|FFFFFF;Faux Paw|C6D7C7|C98A6B;Bad Banker|12162D|8B743D;Bedtime Story|BEF6E9|4B5C68;Twisted Ribbon|776EA7|BDC6FF;Dear Reader|EAEAEA|BF8351;And So On|EF303B|481C19;Major Elle|1812D6|000018;Awkward Penpal|FFFDE7|EC0B19;Inside Joke|F1D3D3|000000;Small Gamble|D1E9E3|334A45;Lunch Money|7DE0E6|FF2A93;Over the Hill|3B755F|000000;Skinny Dipped|CE7182|85CEBA;Second Cousin|340B0B|9B8FFF;Switched Twins|F8EBEE|0C3934;Abandoned Playground|FF9966|FFD2DD;Milo's Big Day|3333FF|CDFFCC;Block Party|75FFC0|7A30CF;Fool's Errand|FB9B2A|0C00FF;Vienna Stroll|FF8FA4|E5E8DC;Endless Circle|000000|FF0000;Open Sea|083EA7|1FDE91;Harmless Fling|674B7C|DD705C;Young Jung|19AAD1|FFCC4C;Previous Engagement|B1FDEB|6B7C95;Lucid Dream|121738|D17C78;First Edition|0C485E|FEB904;Castle Rock|FFE6AD|FF4B24;kühles Blondes|022EAC|13E19B;Excelsior!|F94627|FFFFFF;Hidden Garden|9AB79A|094436;The Cathedral|424E22|FFAD67;Exhalation|C73E99|F8DA1B;In the Vines|5C457B|FF7D39;Diamond Day|FF6090|81072C;Shipwreck|0D4CBE|CFCEC7;Rosebud|501718|FD750A;Lost Time|E7E7E7|DA9F18;Robed Witness|8AA9C6|093929;Deep Pond|B3E0E0|000000;Climb the Terrace|343B3F|FF89B5;Mirage|CDB670|FFFFFF;Solar Flare|F8DA1B|9A008A;Daytrip|F83439|9BC6E3;Deep Breath|EEE9DC|E2818A;Crystal Palace|E2A9C9|000000;Stardust|0A005A|F0F0F0;Broken Spaceship|CDCDD0|F74A1F;Overgrown|F7F7F7|26CB4D;Hidden Passage|2D1C46|B6D5F4;Tamed Beast|053161|FF6A34;Golden Hour|FDB90B|FB5408;The Cottage|837663|101C4E;Tangled Web|B2B2B2|000000;Old World|91A8CF|FFFBFB;Paradiso|F2F2F2|000000;Fallen Petals|F2DDBC|FF67B9;Bloodsmoke|FF8B8B|9C2525";
+const PRE=RAW.split(";").map(s=>{const[n,b,f]=s.split("|");return{name:n,bg:"#"+b,fg:"#"+f}});
+const $=id=>document.getElementById(id);
+const st={style:"solid",swap:false};
+const custom={bg:"#9c1303",fg:"#f0eaad"};
+$("defs").innerHTML=`<g id="solid" transform="translate(159.52 0)"><path d="${D_S1}"/><path d="${D_S2}"/></g><g id="outline"><path d="${D_OUT}"/></g>`;
+
+/* color helpers */
+const lum=h=>{const c=[1,3,5].map(i=>{let v=parseInt(h.substr(i,2),16)/255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const contrast=(a,b)=>{const x=lum(a),y=lum(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+const hsl=(h,s,l)=>{s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));return"#"+[f(0),f(8),f(4)].map(v=>Math.round(v*255).toString(16).padStart(2,"0")).join("")};
+function randPair(){for(;;){const h=Math.random()*360,h2=Math.random()<.5?(h+140+Math.random()*80)%360:(h+Math.random()*40)%360;const bg=hsl(h,30+Math.random()*60,12+Math.random()*76),fg=hsl(h2,25+Math.random()*65,12+Math.random()*80);if(contrast(bg,fg)>=3)return{bg,fg}}}
+const up=h=>h.toUpperCase();
+const slug=s=>s.replace(/[^a-zA-Z0-9]+/g,"-").replace(/^-|-$/g,"");
+const cols=c=>st.swap?{bg:c.fg,fg:c.bg}:{bg:c.bg,fg:c.fg};
+
+/* artwork */
+const svgStr=(style,bg,fg,size)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="${size}" height="${size}"><rect width="150" height="150" fill="${bg}"/><g fill="${fg}">`+(style==="solid"?`<g transform="translate(159.52 0)"><path d="${D_S1}"/><path d="${D_S2}"/></g>`:`<path d="${D_OUT}"/>`)+`</g></svg>`;
+const inline=(bg,fg)=>`<svg viewBox="0 0 150 150" aria-hidden="true"><rect width="150" height="150" fill="${bg}"/><use href="#${st.style}" fill="${fg}"/></svg>`;
+function png(style,bg,fg){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=1600;c.getContext("2d").drawImage(im,0,0,1600,1600);c.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png")};im.onerror=rej;im.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgStr(style,bg,fg,1600))})}
+const fname=(name,bg,fg)=>`Goldfingers-Vintage-Logo-${st.style==="solid"?"Solid":"Outlined"}-${slug(name)}-${bg.slice(1).toUpperCase()}-${fg.slice(1).toUpperCase()}.png`;
+
+/* saving: viewer-granted download when hosted, plain download otherwise */
+let dl=null;
+(async()=>{try{if(window.claude&&claude.use)dl=await claude.use("downloads")}catch(e){}})();
+async function save(name,blob){
+  if(dl){try{await dl.save({filename:name,data:blob})}catch(e){}return}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+}
+
+/* store-only ZIP */
+const T=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=d=>{let c=0xFFFFFFFF;for(let i=0;i<d.length;i++)c=T[(c^d[i])&255]^(c>>>8);return(c^0xFFFFFFFF)>>>0};
+function zip(files){
+  const enc=new TextEncoder(),parts=[],cen=[];let off=0,cs=0;
+  for(const f of files){
+    const n=enc.encode(f.name),crc=crc32(f.data),sz=f.data.length;
+    const h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x800,true);h.setUint16(12,0x21,true);h.setUint32(14,crc,true);h.setUint32(18,sz,true);h.setUint32(22,sz,true);h.setUint16(26,n.length,true);
+    parts.push(h,n,f.data);
+    const c=new DataView(new ArrayBuffer(46));c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x800,true);c.setUint16(14,0x21,true);c.setUint32(16,crc,true);c.setUint32(20,sz,true);c.setUint32(24,sz,true);c.setUint16(28,n.length,true);c.setUint32(42,off,true);
+    cen.push(c,n);cs+=46+n.length;off+=30+n.length+sz;
+  }
+  const e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);
+  return new Blob([...parts,...cen,e],{type:"application/zip"});
+}
+
+/* render */
+let extra=[];
+const newExtra=()=>Array.from({length:6},(_,i)=>({name:"Random No. "+(i+1),...randPair()}));
+function randColor(other){for(let n=0;n<200;n++){const c=hsl(Math.random()*360,25+Math.random()*70,12+Math.random()*76);if(contrast(c,other)>=3)return c}return randPair().bg}
+const all=()=>[...PRE,...extra];
+function tile(c,i,num){const k=cols(c);return`<article class="card"><button class="sw" data-i="${i}" aria-label="Download ${c.name} as PNG">${inline(k.bg,k.fg)}<span class="dli" style="color:${k.fg}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></span></button><div class="meta"><span class="nm">${num?num+". ":""}${c.name}</span><span class="hex"><span title="Background"><i style="background:${k.bg}"></i>${up(k.bg)}</span><span title="Logo"><i style="background:${k.fg}"></i>${up(k.fg)}</span></span></div></article>`}
+function renderGrid(){
+  $("grid").innerHTML=PRE.map((c,i)=>tile(c,i,i+1)).join("");
+  $("grid2").innerHTML=extra.map((c,i)=>tile(c,PRE.length+i)).join("");
+}
+function renderCustom(){
+  $("prev").innerHTML=`<rect width="150" height="150" fill="${custom.bg}"/><use href="#${st.style}" fill="${custom.fg}"/>`;$("dliC").style.color=custom.fg;
+  $("favicon").href="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgStr(st.style,custom.bg,custom.fg,64));
+  $("cBg").value=custom.bg;$("cFg").value=custom.fg;
+  if(document.activeElement!==$("cBgT"))$("cBgT").value=up(custom.bg);
+  if(document.activeElement!==$("cFgT"))$("cFgT").value=up(custom.fg);
+}
+function renderToggle(){
+  $("bSolid").setAttribute("aria-pressed",st.style==="solid");
+  $("bOutline").setAttribute("aria-pressed",st.style==="outline");
+}
+function renderAll(){renderToggle();renderCustom();renderGrid()}
+
+/* events */
+$("bSolid").onclick=()=>{st.style="solid";renderAll()};
+$("bOutline").onclick=()=>{st.style="outline";renderAll()};
+$("bSwap").onclick=()=>{st.swap=!st.swap;[custom.bg,custom.fg]=[custom.fg,custom.bg];renderAll()};
+$("bRand").onclick=()=>{Object.assign(custom,randPair());renderCustom()};
+const hexOk=v=>/^#[0-9a-f]{6}$/i.test(v);
+function bindColor(pick,txt,key){
+  $(pick).oninput=e=>{custom[key]=e.target.value;renderCustom()};
+  $(txt).oninput=e=>{let v=e.target.value.trim();if(v&&v[0]!=="#")v="#"+v;if(hexOk(v)){custom[key]=v.toLowerCase();renderCustom()}};
+  $(txt).onblur=()=>{$(txt).value=up(custom[key])};
+}
+bindColor("cBg","cBgT","bg");bindColor("cFg","cFgT","fg");
+$("prevBtn").onclick=async()=>save(fname("Custom",custom.bg,custom.fg),await png(st.style,custom.bg,custom.fg));
+const tileClick=async e=>{
+  const b=e.target.closest("[data-i]");if(!b)return;
+  const c=all()[+b.dataset.i],k=cols(c);
+  save(fname(c.name,k.bg,k.fg),await png(st.style,k.bg,k.fg));
+};
+$("grid").onclick=$("grid2").onclick=tileClick;
+$("bMore").onclick=()=>{extra=newExtra();renderGrid()};
+$("dBg").onclick=()=>{custom.bg=randColor(custom.fg);renderCustom()};
+$("dFg").onclick=()=>{custom.fg=randColor(custom.bg);renderCustom()};
+$("bZip").onclick=async()=>{
+  const btn=$("bZip"),label=btn.innerHTML;btn.style.minWidth=btn.offsetWidth+"px";btn.disabled=true;
+  try{
+    const items=[{name:"custom",bg:custom.bg,fg:custom.fg},...all().map(c=>({name:c.name,...cols(c)}))];
+    const files=[];
+    for(let i=0;i<items.length;i++){
+      btn.textContent=`${i+1} / ${items.length}`;
+      const it=items[i],b=await png(st.style,it.bg,it.fg);
+      files.push({name:fname(it.name,it.bg,it.fg),data:new Uint8Array(await b.arrayBuffer())});
+      await new Promise(r=>setTimeout(r));
+    }
+    await save(`Goldfingers-Vintage-Logo-${st.style==="solid"?"Solid":"Outlined"}-colorways.zip`,zip(files));
+  }catch(e){console.error(e)}
+  btn.innerHTML=label;btn.style.minWidth="";btn.disabled=false;
+};
+
+extra=newExtra();
+renderAll();
+</script>
+</body>
+</html>

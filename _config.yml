@@ -15,8 +15,16 @@ defaults:
     values:
       layout: "note"
       permalink: notes/:slug/
+  - scope:
+      path: ""
+      type: "slop"
+    values:
+      layout: "blank"
 
 collections:
   projects:
+    output: true
+    permalink: :collection/:name/
+  slop:
     output: true
     permalink: :collection/:name/
