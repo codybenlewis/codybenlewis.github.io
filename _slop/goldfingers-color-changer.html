@@ -7,7 +7,7 @@ title: Goldfingers Color Changer
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Goldfinger's Logo Colorways</title>
+<title>Goldfinger's Vintage Color Changer</title>
 <link id="favicon" rel="icon" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,10 @@ title: Goldfingers Color Changer
 :root[data-theme="dark"]{--bg:#121110;--ink:#f1eee6;--mute:#9a958a;--line:#2f2c27;--panel:#1b1917;--accent:rgba(255,255,255,.08)}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "Work Sans",system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14px/1.5 "Work Sans",system-ui,sans-serif}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:1px solid var(--ink);outline-offset:2px}
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#9c1303;color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:12px max(clamp(16px,3vw,40px),calc((100% - 1440px)/2))}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#9c1303;color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;padding:12px max(clamp(16px,3vw,40px),calc((100% - 1440px)/2))}
 .brand{font:italic 700 24px/1 "Playfair Display SC",Georgia,serif;margin-right:auto;letter-spacing:-.015em;text-transform:uppercase}
 .seg{display:inline-flex;gap:4px;border:1px solid var(--ink);border-radius:999px;padding:3px}
 .seg button{border:0;background:none;padding:7px 20px;border-radius:999px;font-weight:500;transition:background .15s}
@@ -44,7 +44,7 @@ main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
 .custom{display:grid;grid-template-columns:50% minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:stretch;margin:28px 0 36px;padding:clamp(16px,3vw,32px);background:var(--panel);border-radius:6px}
 .custom .sw{align-self:start}
 .custom>div{display:flex;flex-direction:column;min-width:0}
-.custom p{margin:auto 0 22px;color:var(--mute);max-width:46ch}
+.custom p{margin:auto 0 22px;color:var(--mute);max-width:42ch}
 .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px 20px;margin-bottom:22px;max-width:620px}
 .field{min-width:0}
 .field label{display:block;font-weight:500;margin-bottom:6px}
@@ -57,7 +57,7 @@ main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
 .die:hover{color:var(--ink);background:var(--panel)}
 .die svg{width:18px;height:18px}
 .custom .row{margin-bottom:18px}
-.pick input[type=text]{width:100%;min-width:0;height:42px;padding:0 38px 0 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:500 15px "Work Sans",sans-serif;font-variant-numeric:tabular-nums;text-transform:uppercase}
+.pick input[type=text]{width:100%;min-width:0;height:42px;padding:0 38px 0 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:500 14px "Work Sans",sans-serif;font-variant-numeric:tabular-nums;text-transform:uppercase}
 .row{display:flex;flex-wrap:wrap;gap:10px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 24px}
 .sw{position:relative;cursor:pointer;display:block;width:100%;aspect-ratio:1;padding:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:transparent}
@@ -74,10 +74,10 @@ main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
 @container (max-width:200px){.hex{font-size:11.5px;gap:8px}.hex i{margin-right:4px}}
 .hex i{display:inline-block;width:10px;height:10px;border:1px solid var(--line);margin-right:6px;vertical-align:-1px}
 .note{color:var(--mute);font-size:13px;margin:36px 0 0}
-.credit{color:var(--mute);font-size:12px;margin:48px 0 0;text-align:center}
+.credit{color:var(--mute);font-size:14px;margin:48px 0 0;text-align:center}
 .credit a{color:inherit}
 @media (max-width:960px){.ctl{width:100%}}
-@media (max-width:560px){.x{display:none}.seg button{padding:6px 12px}.btn{padding:8px 12px}}
+@media (max-width:560px){.ctl{flex-wrap:wrap}.seg button{padding:6px 12px}.btn{padding:8px 12px}}
 @media (max-width:380px){.ctl{gap:6px}.seg button{padding:6px 9px}.btn{padding:8px 9px}}
 @media (max-width:760px){.custom{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}.brand{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -88,33 +88,37 @@ main{padding:0 max(clamp(16px,3vw,40px),calc((100% - 1440px)/2)) 64px}
 <header class="bar">
   <div class="brand">GOLDFINGER'S VINTAGE</div>
   <div class="ctl">
+  <button class="btn" id="bSwap" title="Swap background and logo colors everywhere"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>Swap</button>
   <div class="seg" role="group" aria-label="Logo version">
     <button id="bSolid" aria-pressed="true">Solid</button>
     <button id="bOutline" aria-pressed="false">Outline</button>
   </div>
-  <button class="btn" id="bSwap" title="Swap background and logo colors everywhere">Swap<span class="x"> colors</span></button>
-  <button class="btn" id="bZip">Download all<span class="x"> (ZIP)</span></button>
+  <div class="seg" role="group" aria-label="Download format">
+    <button id="bSquare" aria-pressed="true">Profile</button>
+    <button id="bPort" aria-pressed="false">Story</button>
+  </div>
+  <button class="btn" id="bZip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="m15 13-3 3-3-3"/></svg>Download all</button>
   </div>
 </header>
 <main>
   <section class="custom" aria-label="Custom colors">
     <button class="sw" id="prevBtn" aria-label="Download custom colors as PNG"><svg id="prev" viewBox="0 0 150 150" aria-hidden="true"></svg><span class="dli" id="dliC"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></span></button>
     <div>
-      <p>Pick any two colors, or shuffle until you're happy. Files automatically export as a 1600 × 1600 PNG.</p>
+      <p>Pick any two colors, or shuffle until you're happy. Files automatically export as a 2400 × 2400 PNG.</p>
       <div class="row">
-        <button type="button" class="btn" id="bRand"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button>
+        <button type="button" class="btn" id="bRand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></svg>Randomize</button>
       </div>
       <div class="fields">
-        <div class="field"><label for="cBgT">Background</label><div class="pick"><input type="color" id="cBg" aria-label="Background color picker"><div class="hexwrap"><input type="text" id="cBgT" maxlength="7" spellcheck="false"><button class="die" id="dBg" aria-label="Randomize background color" title="Randomize background"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><g fill="currentColor" stroke="none"><circle cx="8.6" cy="8.6" r="1.2"/><circle cx="15.4" cy="8.6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="8.6" cy="15.4" r="1.2"/><circle cx="15.4" cy="15.4" r="1.2"/></g></svg></button></div></div></div>
-        <div class="field"><label for="cFgT">Logo</label><div class="pick"><input type="color" id="cFg" aria-label="Logo color picker"><div class="hexwrap"><input type="text" id="cFgT" maxlength="7" spellcheck="false"><button class="die" id="dFg" aria-label="Randomize logo color" title="Randomize logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5"/><g fill="currentColor" stroke="none"><circle cx="8.6" cy="8.6" r="1.2"/><circle cx="15.4" cy="8.6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="8.6" cy="15.4" r="1.2"/><circle cx="15.4" cy="15.4" r="1.2"/></g></svg></button></div></div></div>
+        <div class="field"><label for="cBgT">Background</label><div class="pick"><input type="color" id="cBg" aria-label="Background color picker"><div class="hexwrap"><input type="text" id="cBgT" maxlength="7" spellcheck="false"><button class="die" id="dBg" aria-label="Randomize background color" title="Randomize background"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M16 8h.01"/><path d="M8 8h.01"/><path d="M8 16h.01"/><path d="M16 16h.01"/><path d="M12 12h.01"/></svg></button></div></div></div>
+        <div class="field"><label for="cFgT">Logo</label><div class="pick"><input type="color" id="cFg" aria-label="Logo color picker"><div class="hexwrap"><input type="text" id="cFgT" maxlength="7" spellcheck="false"><button class="die" id="dFg" aria-label="Randomize logo color" title="Randomize logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M16 8h.01"/><path d="M8 8h.01"/><path d="M8 16h.01"/><path d="M16 16h.01"/><path d="M12 12h.01"/></svg></button></div></div></div>
       </div>
     </div>
   </section>
   <section class="grid" id="grid" aria-label="Preset color combinations"></section>
   <hr class="rule">
-  <div class="more"><p>Seriously Dylan, you're not happy with any of those? Try these.</p><button type="button" class="btn" id="bMore"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="11" width="9" height="9" rx="2.2"/><rect x="13" y="3" width="8.5" height="8.5" rx="2.2"/><g fill="currentColor" stroke="none"><circle cx="5.8" cy="13.8" r=".9"/><circle cx="9.2" cy="17.2" r=".9"/><circle cx="5.8" cy="17.2" r=".9"/><circle cx="9.2" cy="13.8" r=".9"/><circle cx="15.5" cy="5.5" r=".9"/><circle cx="17.25" cy="7.25" r=".9"/><circle cx="19" cy="9" r=".9"/></g></svg>Randomize</button></div>
+  <div class="more"><p>Seriously Dylan, you're not happy with any of those? Try these.</p><button type="button" class="btn" id="bMore"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></svg>Randomize</button></div>
   <section class="grid" id="grid2" aria-label="Random color combinations"></section>
-  <p class="credit">Color inspiration from <a href="https://access.mymind.com/colors" target="_blank" rel="noopener noreferrer">mymind Colors</a>.</p>
+  <p class="credit">Colors pairings stolen from <a href="https://access.mymind.com/colors" target="_blank" rel="noopener noreferrer">Tobias van Schneider,</a> as he reccommened.</p>
 </main>
 <script>
 const D_OUT="M114.35,40.13c.59.33.84.77.64,1.45-.16.54-1.2,2.19-1.55,2.79-.41.69-.85,1.45-1.31,2.1-.27.37-.71,1.11-1.22,1.11h-38.7l9.76,17.66c.66-.65,1.27-1.4,1.86-2.13.41-.51.59-1.17,1.29-1.27h16.5c1.57.17,2.4,1.82,1.58,3.2l-10.07,18.13c-.58,1.14-1.78,1.39-2.66,1.99-.79.53-1.58,1.68-2.4,2.25l-1.66,1.01h4.38c3.87.6,13.91-21.96,13.91-21.96.89-1.07,1.83-2.1,2.71-3.18.51-.63.66-1.35,1.59-1.43.51-.05,2.31-.07,2.74.06.63.18.89.94.61,1.52l-22.73,40.88c-.44.69-1.08,1.36-1.81,1.75-.34.18-.81.29-1.08.47-1.48.96-2.57,3.36-4.85,3.37h-21.54c-1.54-.15-2.91-1.03-3.69-2.35l-21.68-39.18v-.77c.18-.41.41-.72.67-1.08.87-1.18,2.16-2.84,3.17-3.88.28-.29,1-.77,1.4-.77h14.45l-7.84-14.2c-.42-.64-.71-1.71-.17-2.37.35-.43,1.08-.98,1.51-1.44.3-.32,1.22-1.25,1.39-1.55.13-.22.15-.56.27-.82.3-.66.98-1.13,1.67-1.32h62.91ZM113.58,41.45h-62.02s-.36.22-.4.26c-.26.26-.31.66-.24,1,7.42,13.38,14.79,26.81,22.33,40.11.66.75,1.54,1.28,2.55,1.4,4.2-.25,8.78.33,12.94,0,1.11-.09,2.55-.77,3.2-1.68l10.22-18.44c.17-.28-.23-.95-.49-.95h-16l.91,1.63,12.01.06c.59.26.81.95.47,1.52l-6.73,12.1c-1.14,1.41-3.29,1.41-4.45.03l-17.49-31.47c-.81-1.92.65-3.94,2.68-4.01l39.64-.05.84-1.5ZM110.94,63.14h-1.94c-.03.18-.13.36-.22.52-4.27,7.32-8.05,15.08-12.4,22.31-1.37,2.28-3.11,3.58-5.86,3.75-5.38.32-11.16-.18-16.57-.09-2.22-.33-4.15-1.62-5.3-3.53l-12.73-22.94h-15.52c-.59.06-.98.6-.88,1.18,7.3,13.25,14.6,26.53,22.08,39.67.72.82,1.73,1.28,2.82,1.36,7.27-.08,14.56.15,21.82-.12.91-.25,1.67-.81,2.2-1.6l22.51-40.51ZM94.52,69.27h-10.23l4.43,8.08c.16.35.72.84,1.11.84.14,0,.09-.03.14-.1,1.6-2.73,3.03-5.56,4.67-8.28l-.12-.54Z",D_S1="M-44.52,41.06l-1.27,2.23c-.08.14-.22.22-.38.22h-42.16c-1.78,0-2.91,1.91-2.04,3.47l18.1,32.6c.89,1.6,3.19,1.6,4.08,0l6.87-12.42c.16-.29-.05-.64-.38-.64h-12.48c-.16,0-.3-.08-.38-.22l-1.24-2.22c-.16-.29.05-.64.38-.64h17.19c1.14,0,1.85,1.22,1.3,2.21l-10.65,19.16c-.82,1.47-2.96,2.39-4.65,2.39h-12.65c-1.79,0-3.44-.97-4.31-2.54l-23.13-41.64c-.65-1.17.2-2.6,1.53-2.6H-44.89c.33,0,.53.35.38.64Z",D_S2="M-47.32,64.07l-23.95,43.12c-.82,1.47-2.37,2.39-4.05,2.39h-21.95c-1.79,0-3.44-.97-4.31-2.54l-22.78-41c-.65-1.17.2-2.6,1.53-2.6h16.74l13.6,24.48c1.25,2.26,3.63,3.66,6.22,3.66h16.34c2.31,0,4.43-1.25,5.55-3.27l13.7-24.65c.08-.14.22-.22.38-.22h2.61c.33,0,.53.35.38.64Z";
@@ -137,8 +141,20 @@ const cols=c=>st.swap?{bg:c.fg,fg:c.bg}:{bg:c.bg,fg:c.fg};
 /* artwork */
 const svgStr=(style,bg,fg,size)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="${size}" height="${size}"><rect width="150" height="150" fill="${bg}"/><g fill="${fg}">`+(style==="solid"?`<g transform="translate(159.52 0)"><path d="${D_S1}"/><path d="${D_S2}"/></g>`:`<path d="${D_OUT}"/>`)+`</g></svg>`;
 const inline=(bg,fg)=>`<svg viewBox="0 0 150 150" aria-hidden="true"><rect width="150" height="150" fill="${bg}"/><use href="#${st.style}" fill="${fg}"/></svg>`;
-function png(style,bg,fg){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=1600;c.getContext("2d").drawImage(im,0,0,1600,1600);c.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png")};im.onerror=rej;im.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgStr(style,bg,fg,1600))})}
-const fname=(name,bg,fg)=>`Goldfingers-Vintage-Logo-${st.style==="solid"?"Solid":"Outlined"}-${slug(name)}-${bg.slice(1).toUpperCase()}-${fg.slice(1).toUpperCase()}.png`;
+const fmt={port:false};
+const glyphBox=(()=>{const cache={};return style=>{if(cache[style])return cache[style];
+  const ns="http://www.w3.org/2000/svg",sv=document.createElementNS(ns,"svg");
+  sv.setAttribute("viewBox","0 0 150 150");sv.style.cssText="position:absolute;width:0;height:0;visibility:hidden";
+  sv.innerHTML="<g>"+(style==="solid"?`<g transform="translate(159.52 0)"><path d="${D_S1}"/><path d="${D_S2}"/></g>`:`<path d="${D_OUT}"/>`)+"</g>";
+  document.body.appendChild(sv);const b=sv.firstElementChild.getBBox();sv.remove();
+  return cache[style]={x:b.x,y:b.y,w:b.width,h:b.height}}})();
+const svgPort=(style,bg,fg)=>{const b=glyphBox(style),k=400/b.w,cx=b.x+b.w/2,cy=b.y+b.h/2;
+  return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920"><rect width="1080" height="1920" fill="${bg}"/><g fill="${fg}" transform="translate(540 960) scale(${k}) translate(${-cx} ${-cy})">`+(style==="solid"?`<g transform="translate(159.52 0)"><path d="${D_S1}"/><path d="${D_S2}"/></g>`:`<path d="${D_OUT}"/>`)+`</g></svg>`};
+function png(style,bg,fg){return new Promise((res,rej)=>{const port=fmt.port,W=port?1080:2400,H=port?1920:2400;
+  const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=W;c.height=H;c.getContext("2d").drawImage(im,0,0,W,H);c.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png")};im.onerror=rej;
+  im.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(port?svgPort(style,bg,fg):svgStr(style,bg,fg,2400))})}
+const kind=()=>fmt.port?"Story":"Profile";
+const fname=(name,bg,fg,idx)=>`Goldfingers-Vintage-${kind()}-${idx?idx+"-":""}${st.style==="solid"?"Solid":"Outlined"}-${slug(name)}-${bg.slice(1).toUpperCase()}-${fg.slice(1).toUpperCase()}.png`;
 
 /* saving: viewer-granted download when hosted, plain download otherwise */
 let dl=null;
@@ -191,6 +207,9 @@ function renderAll(){renderToggle();renderCustom();renderGrid()}
 /* events */
 $("bSolid").onclick=()=>{st.style="solid";renderAll()};
 $("bOutline").onclick=()=>{st.style="outline";renderAll()};
+const setFmt=v=>{fmt.port=v;$("bSquare").setAttribute("aria-pressed",!v);$("bPort").setAttribute("aria-pressed",v)};
+$("bSquare").onclick=()=>setFmt(false);
+$("bPort").onclick=()=>setFmt(true);
 $("bSwap").onclick=()=>{st.swap=!st.swap;[custom.bg,custom.fg]=[custom.fg,custom.bg];renderAll()};
 $("bRand").onclick=()=>{Object.assign(custom,randPair());renderCustom()};
 const hexOk=v=>/^#[0-9a-f]{6}$/i.test(v);
@@ -204,24 +223,31 @@ $("prevBtn").onclick=async()=>save(fname("Custom",custom.bg,custom.fg),await png
 const tileClick=async e=>{
   const b=e.target.closest("[data-i]");if(!b)return;
   const c=all()[+b.dataset.i],k=cols(c);
-  save(fname(c.name,k.bg,k.fg),await png(st.style,k.bg,k.fg));
+  const n=+b.dataset.i;save(fname(c.name,k.bg,k.fg,n<PRE.length?n+1:0),await png(st.style,k.bg,k.fg));
 };
 $("grid").onclick=$("grid2").onclick=tileClick;
-$("bMore").onclick=()=>{extra=newExtra();renderGrid()};
+$("bMore").onclick=()=>{
+  const g=$("grid2"),y=window.scrollY;
+  extra=newExtra();
+  g.style.minHeight=g.offsetHeight+"px";
+  g.innerHTML=extra.map((c,i)=>tile(c,PRE.length+i)).join("");
+  window.scrollTo(0,y);
+  requestAnimationFrame(()=>{g.style.minHeight="";window.scrollTo(0,y)});
+};
 $("dBg").onclick=()=>{custom.bg=randColor(custom.fg);renderCustom()};
 $("dFg").onclick=()=>{custom.fg=randColor(custom.bg);renderCustom()};
 $("bZip").onclick=async()=>{
   const btn=$("bZip"),label=btn.innerHTML;btn.style.minWidth=btn.offsetWidth+"px";btn.disabled=true;
   try{
-    const items=[{name:"custom",bg:custom.bg,fg:custom.fg},...all().map(c=>({name:c.name,...cols(c)}))];
+    const items=[{name:"custom",bg:custom.bg,fg:custom.fg},...all().map((c,j)=>({name:c.name,idx:j<PRE.length?j+1:0,...cols(c)}))];
     const files=[];
     for(let i=0;i<items.length;i++){
       btn.textContent=`${i+1} / ${items.length}`;
       const it=items[i],b=await png(st.style,it.bg,it.fg);
-      files.push({name:fname(it.name,it.bg,it.fg),data:new Uint8Array(await b.arrayBuffer())});
+      files.push({name:fname(it.name,it.bg,it.fg,it.idx),data:new Uint8Array(await b.arrayBuffer())});
       await new Promise(r=>setTimeout(r));
     }
-    await save(`Goldfingers-Vintage-Logo-${st.style==="solid"?"Solid":"Outlined"}-colorways.zip`,zip(files));
+    await save(`Goldfingers-Vintage-${kind()}-${st.style==="solid"?"Solid":"Outlined"}-Colorways.zip`,zip(files));
   }catch(e){console.error(e)}
   btn.innerHTML=label;btn.style.minWidth="";btn.disabled=false;
 };
