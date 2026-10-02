@@ -154,7 +154,7 @@ function png(style,bg,fg){return new Promise((res,rej)=>{const port=fmt.port,W=p
   const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=W;c.height=H;c.getContext("2d").drawImage(im,0,0,W,H);c.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png")};im.onerror=rej;
   im.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(port?svgPort(style,bg,fg):svgStr(style,bg,fg,2400))})}
 const kind=()=>fmt.port?"Story":"Profile";
-const fname=(name,bg,fg,idx)=>`Goldfingers-Vintage-${kind()}-${idx?idx+"-":""}${st.style==="solid"?"Solid":"Outlined"}-${slug(name)}-${bg.slice(1).toUpperCase()}-${fg.slice(1).toUpperCase()}.png`;
+const fname=(name,bg,fg,idx)=>`Goldfingers-Vintage-${kind()}-Logo-${idx?idx+"-":""}${st.style==="solid"?"Solid":"Outlined"}-${slug(name)}-${bg.slice(1).toUpperCase()}-${fg.slice(1).toUpperCase()}.png`;
 
 /* saving: viewer-granted download when hosted, plain download otherwise */
 let dl=null;
@@ -247,7 +247,7 @@ $("bZip").onclick=async()=>{
       files.push({name:fname(it.name,it.bg,it.fg,it.idx),data:new Uint8Array(await b.arrayBuffer())});
       await new Promise(r=>setTimeout(r));
     }
-    await save(`Goldfingers-Vintage-${kind()}-${st.style==="solid"?"Solid":"Outlined"}-Colorways.zip`,zip(files));
+    await save(`Goldfingers-Vintage-${kind()}-Logo-${st.style==="solid"?"Solid":"Outlined"}-Colorways.zip`,zip(files));
   }catch(e){console.error(e)}
   btn.innerHTML=label;btn.style.minWidth="";btn.disabled=false;
 };
